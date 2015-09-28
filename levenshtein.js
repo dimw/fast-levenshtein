@@ -176,8 +176,16 @@
 
   };
 
+  // angular
+  if (typeof angular !== "undefined" && angular != null) {
+    angular
+      .module('ngFastLevenshtein', [])
+      .factory('fastLevenshteinService', function () {
+        return Levenshtein;
+      });
+  }
   // amd
-  if (typeof define !== "undefined" && define !== null && define.amd) {
+  else if (typeof define !== "undefined" && define !== null && define.amd) {
     define(function() {
       return Levenshtein;
     });
